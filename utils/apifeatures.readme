@@ -1,0 +1,21 @@
+// EXAMPLES FOR POSTMAN QUERIES
+
+// SEARCH EXAMPLE
+// GET /api/v1/tours?search=sunset
+// Searches for tours with 'sunset' in the name or description.
+
+// FILTER DELETED EXAMPLE
+// GET /api/v1/tours?filterDeleted=true
+// Retrieves all tours excluding the ones marked as deleted.
+
+// REGEX FILTER EXAMPLE
+// GET /api/v1/tours?name=sun&description=beach
+// Finds tours where the name contains 'sun' and the description contains 'beach'.
+
+// POPULATE EXAMPLE
+// GET /api/v1/tours?populate=guides,locations
+// Populates guides and locations fields for the tours.
+
+// RANGE FILTER EXAMPLE
+// GET /api/v1/tours?price_min=100&price_max=500&rating_min=4
+// Finds tours priced between $100 and $500 with a minimum rating of 4.
