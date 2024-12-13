@@ -19,14 +19,13 @@ app.use(express.static(`${__dirname}/public`));
 
 //Routes
 app.use('/api/v1/tours', tourRouter);
+// app.use('/api/v1/users', userRouter);
 
 //Handling all unHandles Routes with Error Handling.
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!.`, 404));
 });
-
-// app.use('/api/v1/users', userRouter);
 
 //Error Handling
 app.use(globalErrorHandler);
