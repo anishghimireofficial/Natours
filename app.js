@@ -1,6 +1,7 @@
 import express from 'express';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import 'dotenv/config';
 import morgan from 'morgan';
 import AppError from './utils/appError.js';
 import globalErrorHandler from './utils/errorController.js';
