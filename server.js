@@ -8,19 +8,24 @@ const Mongo_uri = process.env.Mongo_uri.replace(
   process.env.MONGO_DB_PASSWORD
 );
 
-const ConnectDB = async () => {
-  try {
-    await mongoose.connect(Mongo_uri);
-    console.log('Database Connection SuccessFul.');
-  } catch (error) {
-    console.log(error.message);
-    process.exit(1);
-  }
+const ConnectDB = () => {
+  mongoose
+    .connect(Mongo_uri)
+    .then(console.log('Database Connection SuccessFul.'));
 };
 
 //STARTING SERVER
 const port = process.env.port || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is Running on ${port}`);
   ConnectDB();
+});
+
+// UNHANDLE REJECTION
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+  console.log(`Unhandle rejection : Shutting Down...`);
+  server.close(() => {
+    process.exit(1);
+  });
 });
