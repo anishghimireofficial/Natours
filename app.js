@@ -7,6 +7,7 @@ import AppError from './utils/appError.js';
 import globalErrorHandler from './utils/errorController.js';
 
 import tourRouter from './routes/tourRoutes.js';
+import userRouter from './routes/userRoutes.js';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -20,7 +21,7 @@ app.use(express.static(`${__dirname}/public`));
 
 //Routes
 app.use('/api/v1/tours', tourRouter);
-// app.use('/api/v1/users', userRouter);
+app.use('/api/v1/users', userRouter);
 
 //Handling all unHandles Routes with Error Handling.
 
